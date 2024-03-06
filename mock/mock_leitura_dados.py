@@ -1,0 +1,9 @@
+volta = 1
+tempo = 0.3 
+velocidade = 20
+consumo =  100000000
+aceleracao = 12
+x = 129881893.09
+y = 912932379289.12 
+rpm = 9829
+dicionario = {"volta": volta, "tempo": tempo, "velocidade": velocidade, "consumo": consumo,  "aceleracao": aceleracao, "x": x, "y": y, "rpm": rpm}
