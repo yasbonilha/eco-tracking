@@ -1,4 +1,0 @@
-from mock_leitura_dados import dicionario
-from src.tratamento_dados import tratar_dados_instantaneos
-
-tratar_dados_instantaneos(dicionario)
