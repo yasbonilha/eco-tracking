@@ -29,12 +29,15 @@ def tratar_dados_instantaneos():
         plt.clf()
 
     plt.ioff()
-
+    print("dados instantâneos tratados com sucesso.")
     return tabela
-# color='#ff7f0e',
     
-
-
+def tratar_dados_permanentes():
+    vm = tabela["velocidade"].mean()
+    mrpm = tabela["rpm"].mean()
+    mtempovolta = tabela.groupby(["volta"], as_index=False)["tempo"].mean()
+    print("dados permanentes tratados com sucesso.")
+  
 
 
 
