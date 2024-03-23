@@ -1,7 +1,9 @@
 import mysql.connector
 from sqlalchemy import create_engine
 
-
+'''
+pagina destinada a fazer a conexao com o banco de dados. criamos a conexao com o nome do usuario, senha, nome do banco de dados e o host (que geralmente e localhost). criamos a engine para poder passar direto do dataframe para o banco de dados.
+'''
 def conexao_bd():
     try:
         # Conecta ao banco de dados

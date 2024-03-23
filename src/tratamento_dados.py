@@ -1,8 +1,12 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib import animation
-from mock.mock_leitura_dados import chegada_dados_prontos
+from mock.mock_leitura_dados import chegada_dados_prontos, chegada_dados
+import numpy as np
 
+'''
+pagina destinada a receber os dados do arduino e trata-los. na funcao instantanea, criamos um df e plotamos um grafico com base nele, que e atualizado de forma recorrente, e devolve o proprio df. funcao permanente ainda a ser terminada.
+'''
 #dados instantâneos
 tabela = pd.DataFrame(columns = ["volta", "tempo", "velocidade", "consumo", "aceleracao", "x", "y", "rpm"])
 
@@ -12,8 +16,8 @@ def tratar_dados_instantaneos():
 
     plt.ion()
 
-    for i in range(10):
-        tabela = pd.concat([tabela, pd.DataFrame([chegada_dados_prontos(i)])])
+    for i in range(20):
+        tabela = pd.concat([tabela, pd.DataFrame([chegada_dados(i)])])
         print(tabela)
         plt.plot(tabela["tempo"], tabela["velocidade"], 'o-', label='Velocidade')
         plt.title('Velocidade do Carro em Função do Tempo')
@@ -29,6 +33,11 @@ def tratar_dados_instantaneos():
         plt.clf()
 
     plt.ioff()
+    plt.show()
+
+
+
+
     print("dados instantâneos tratados com sucesso.")
     return tabela
     
@@ -37,17 +46,5 @@ def tratar_dados_permanentes():
     mrpm = tabela["rpm"].mean()
     mtempovolta = tabela.groupby(["volta"], as_index=False)["tempo"].mean()
     print("dados permanentes tratados com sucesso.")
-  
-
-
-
-
-
-
-
-
-
-
-#dados permanentes - calculados só no final da corrida
 
 

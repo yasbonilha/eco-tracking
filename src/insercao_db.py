@@ -1,6 +1,9 @@
 import mysql.connector
 from conexao_bd.conexao_db import conexao_bd
 
+'''
+pagina destinada a inserir dados do dataframe no banco de dados e fecha-la depois.
+'''
 
 #pega os dados tratados do dataframe e insere eles na tabela ao final da corrida
 def inserir_dados(tabela):

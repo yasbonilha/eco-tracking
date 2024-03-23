@@ -1,8 +1,11 @@
 import random
 
-dicionario = {"volta": [], "tempo": [], "velocidade": [], "consumo": [], "aceleracao": [], "x": [], "y": [], "rpm": []}
+'''
+pagina destinada a funcoes que vao gerar dados mockados enquanto nao temos a entrada de dados pelo arduino (culpa do ff). dividida em dados randomicos e dados prontos
+'''
 
 def chegada_dados_prontos(i):
+    dicionario = {"volta": [], "tempo": [], "velocidade": [], "consumo": [], "aceleracao": [], "x": [], "y": [], "rpm": []}
     voltamock = [1, 1, 1, 1, 1, 2, 2, 2, 2, 2]
     tempomock = [1, 2, 3, 4, 5,6 ,7 ,8, 9, 10]
     velocidademock = [12, 14, 20, 16, 14, 16, 18, 12, 13, 16]
@@ -22,7 +25,17 @@ def chegada_dados_prontos(i):
     dicionario["rpm"] = rpmmock[i]
     return dicionario
 
-def chegada_dados():
+def chegada_dados(i):
     velocidade = random.randint(10,15)
-    return velocidade
+    consumo = random.randint(1000, 3000)
+    aceleracao = random.randint(1, 5)
+    x = random.randint(10000, 30000)
+    y = random.randint(10000, 30000)
+    rpm = random.randint(100, 3000)
+    volta = [1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4]
+    tempo = [1, 2, 3, 4, 5,6 ,7 ,8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+
+    dicionario = {"volta": volta[i], "tempo": tempo[i], "velocidade": velocidade, "consumo": consumo, "aceleracao": aceleracao, "x": x, "y":y, "rpm": rpm}
+
+    return dicionario
 

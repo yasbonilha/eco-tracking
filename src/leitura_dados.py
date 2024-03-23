@@ -1,5 +1,9 @@
 import serial
 
+'''
+pagina destinada a realizar a entrada de dados pelo arduino no software. ainda nao testado porque o hardware nao esta pronto.
+'''
+
 # Configura a comunicação serial com o Arduino
 arduino = serial.Serial('COM7', 9600)  
 
