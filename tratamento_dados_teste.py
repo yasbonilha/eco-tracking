@@ -1,6 +1,7 @@
 import pandas as pd
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-from matplotlib import animation
 from mock.mock_leitura_dados import chegada_dados_prontos, chegada_dados
 import numpy as np
 
@@ -50,4 +51,5 @@ def tratar_dados_instantaneos():
     
     
     print("Dados instantâneos tratados com sucesso.")
-    return tabela
+    lista_tabela = [row.tolist() for index, row in tabela.iterrows()]
+    return lista_tabela
