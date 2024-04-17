@@ -1,6 +1,7 @@
 import pandas as pd
-import matplotlib
-matplotlib.use('Agg')
+# APLICACAO FLASK: o use Agg roda o plt em "segundo plano", mas não roda GUI - então ele não mostra os gráficos
+# import matplotlib
+# matplotlib.use('Agg') 
 import matplotlib.pyplot as plt
 from mock.mock_leitura_dados import chegada_dados_prontos, chegada_dados
 import numpy as np
