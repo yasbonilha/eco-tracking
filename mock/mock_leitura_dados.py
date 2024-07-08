@@ -1,4 +1,5 @@
 import random
+from csv import DictReader, QUOTE_NONNUMERIC
 
 '''
 pagina destinada a funcoes que vao gerar dados mockados enquanto nao temos a entrada de dados pelo arduino (culpa do ff). dividida em dados randomicos e dados prontos
@@ -39,3 +40,23 @@ def chegada_dados(i):
 
     return dicionario
 
+def chegada_dados_csv(i):
+    #  O arquivo dados.csv é aberto e atribuido à variável arquivo
+    with open('mock\dados.csv') as arquivo:
+        # O arquivo é lido como dicionário pela classe DictReader
+        leitor = DictReader(arquivo, delimiter = ';')
+        
+        # O programa cria um dicionário com os valores da linha seguinte a ser lida dependedo do valor i
+        for x in range(i):
+            leitor.__next__()
+        dict = leitor.__next__()
+
+    # Tupla de chaves 
+    chaves = ('aceleracao', ' latitude', ' longitude', ' tempo', ' tensao', ' corrente', ' consumo', ' rpm', ' velocidade', ' volta')
+    
+    # O programa converte todos os valores do dicionário para float
+    for index in range(len(chaves)):
+        dict.update({chaves[index] : float(dict.get(chaves[index]))})
+    
+    # Retorna a variável dict
+    return dict

@@ -3,14 +3,14 @@ import pandas as pd
 # import matplotlib
 # matplotlib.use('Agg') 
 import matplotlib.pyplot as plt
-from mock.mock_leitura_dados import chegada_dados_prontos, chegada_dados
+from mock.mock_leitura_dados import chegada_dados_prontos, chegada_dados, chegada_dados_csv
 import numpy as np
 
 '''
 pagina destinada a receber os dados do arduino e trata-los. na funcao instantanea, criamos um df e plotamos um grafico com base nele, que e atualizado de forma recorrente, e devolve o proprio df. funcao permanente ainda a ser terminada.
 '''
 #dados instantâneos
-tabela = pd.DataFrame(columns = ["volta", "tempo", "velocidade", "consumo", "aceleracao", "x", "y", "rpm"])
+tabela = pd.DataFrame(columns = ["aceleracao", "latitude", "longitude", "tempo", "tensao", "corrente", "consumo", "rpm", "velocidade", "volta"])
 
 fig, axs = plt.subplots(1, 2, figsize=(12, 6))  # criação de duas subtramas
 
@@ -24,11 +24,13 @@ def tratar_dados_instantaneos():
     plt.ion()
 
     for i in range(20):
-        tabela = pd.concat([tabela, pd.DataFrame([chegada_dados(i)])])
-
+        print(tabela)
+        tabela = pd.concat([tabela, pd.DataFrame([chegada_dados_csv(i)])])
+        print(tabela)
         # Plotagem no primeiro gráfico
         axs[0].plot(tabela["tempo"], tabela["velocidade"], 'o-', color='blue')  # Alteração de cor para azul
         axs[0].set_title('Velocidade do Carro em Função do Tempo')
+        
         axs[0].set_xlabel('Tempo (s)')
         axs[0].set_ylabel('Velocidade (m/s)')
         axs[0].legend(['Velocidade'])  # Apenas um rótulo para a legenda
